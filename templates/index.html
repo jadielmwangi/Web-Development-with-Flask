@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Survey Application</title>
+    <!-- Link to the CSS file -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Welcome to Personal Survey: {{ date }}</h1>
+    <h3>The aim is to collect Income and Expense Data</h3>
+
+    <div class="form-container">
+        <form action="/submit" method="POST">
+            <label for="age">Your Age:</label>
+            <input type="number" id="age" name="age" required>
+
+            <label for="gender">Your Gender:</label>
+            <select id="gender" name="gender" required>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="None">Non-binary</option>
+            </select>
+
+            <label for="income">Monthly Household Income KES:</label>
+            <input type="number" id="income" name="income" required>
+
+            <label for="expenses">Monthly Household Expenses KES: Tick each expense category and enter amount</label>
+            <div class="checkbox-group">
+                <div>
+                    <input type="checkbox" id="utilities" name="utilities">
+                    <label for="utilities">Utilities</label>
+                    <input type="number" name="utilities_amount" placeholder="Amount" min="0" step="any">
+                </div>
+                <div>
+                    <input type="checkbox" id="entertainment" name="entertainment">
+                    <label for="entertainment">Entertainment</label>
+                    <input type="number" name="entertainment_amount" placeholder="Amount" min="0" step="any">
+                </div>
+                <div>
+                    <input type="checkbox" id="school_fees" name="school_fees">
+                    <label for="school_fees">School Fees</label>
+                    <input type="number" name="school_fees_amount" placeholder="Amount" min="0" step="any">
+                </div>
+                <div>
+                    <input type="checkbox" id="shopping" name="shopping">
+                    <label for="shopping">Shopping</label>
+                    <input type="number" name="shopping_amount" placeholder="Amount" min="0" step="any">
+                </div>
+                <div>
+                    <input type="checkbox" id="healthcare" name="healthcare">
+                    <label for="healthcare">Healthcare</label>
+                    <input type="number" name="healthcare_amount" placeholder="Amount" min="0" step="any">
+                </div>
+            </div>
+
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+    <!-- Button to export CSV -->
+    <div class="export-container">
+        <form action="/export" method="GET">
+            <button type="submit">Export CSV</button>
+        </form>
+    </div>
+
+    <h3>@Grace Kamau: Date: {{ date }}</h3>
+</body>
+</html>
