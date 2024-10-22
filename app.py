@@ -1,4 +1,6 @@
 
+
+
 from flask import Flask, render_template, request, send_file
 from pymongo import MongoClient
 from user import User  # Import the User class
@@ -8,17 +10,19 @@ import os
 
 app = Flask(__name__)
 
-# MongoDB setup
-client = MongoClient('mongodb://localhost:27017/')
-db = client['survey_db']
-collection = db['user_data']
+# MongoDB Atlas setup
+
+client = MongoClient("mongodb+srv://<jedielmwangi>:<pSFPz6A9h0pFP0Yox>@<mongodb+srv://jedielmwangi:<db_password>@cluster0.mbqss.mongodb.net/>/<Project 0>?retryWrites=true&w=majority")
+
+
+db = client['survey_db']  # Your MongoDB database name
+collection = db['user_data']  # Your MongoDB collection name
 
 @app.route('/')
 def index():
     # Get today's date
     today_date = datetime.today().strftime('%Y-%m-%d')  # Format: YYYY-MM-DD
     return render_template('index.html', date=today_date)
-
 
 @app.route('/submit', methods=['POST'])
 def submit():
@@ -55,8 +59,6 @@ def submit():
 
     return "Data submitted successfully!"
 
-
-
 @app.route('/export', methods=['GET'])
 def export():
     # Define the CSV file path
@@ -89,4 +91,3 @@ def export():
 
 if __name__ == '__main__':
     app.run(debug=True)
-
