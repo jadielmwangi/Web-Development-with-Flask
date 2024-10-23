@@ -87,4 +87,4 @@ def export():
     return send_file(csv_file_path, as_attachment=True, download_name='user_data.csv')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False)
