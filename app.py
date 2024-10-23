@@ -9,7 +9,8 @@ import os
 app = Flask(__name__)
 
 # MongoDB setup with Atlas URI
-client = MongoClient('mongodb+srv://jedielmwangi:Gikondi%402025%23@cluster0.mbqss.mongodb.net/userdata?retryWrites=true&w=majority')
+client = MongoClient('mongodb+srv://jedielmwangi:SFPz6A9h0pFP0Yox@cluster0.mbqss.mongodb.net/userdata?retryWrites=true&w=majority')
+
 db = client['userdata']
 collection = db['user_data']
 
