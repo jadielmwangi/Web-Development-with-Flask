@@ -1,3 +1,4 @@
+
 from flask import Flask, render_template, request, send_file
 from pymongo import MongoClient
 from user import User  # Import the User class
@@ -7,9 +8,9 @@ import os
 
 app = Flask(__name__)
 
-# MongoDB setup
-client = MongoClient('mongodb://localhost:27017/')
-db = client['survey_db']
+# MongoDB setup with Atlas URI
+client = MongoClient('mongodb+srv://jedielmwangi:Gikondi%402025%23@cluster0.mbqss.mongodb.net/userdata?retryWrites=true&w=majority')
+db = client['userdata']
 collection = db['user_data']
 
 @app.route('/')
@@ -53,7 +54,6 @@ def submit():
     })
 
     return "Data submitted successfully!"
-
 
 
 @app.route('/export', methods=['GET'])
