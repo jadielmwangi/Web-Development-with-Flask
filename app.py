@@ -5,7 +5,7 @@ from user import User  # Import the User class
 from datetime import datetime
 import csv
 import os
-
+import matplotlib.pyplot as plt  # For data visualization
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'  # Required for flash messages
